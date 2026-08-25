@@ -1,19 +1,19 @@
-// Render the REAL built bundle in jsdom and assert what actually appears.
+// Render the REAL built bundle in jsdom against the LIVE local APIs.
 import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
 const html = readFileSync('./dist/index.html','utf8');
 const js = readFileSync('./dist/' + html.match(/src="\/([^"]+\.js)"/)[1],'utf8');
 const dom = new JSDOM(html, { runScripts:'outside-only', url:'http://localhost:4207/', pretendToBeVisual:true });
-dom.window.fetch = async () => { throw new Error('offline'); };
+dom.window.fetch = (...a) => fetch(...a);   // real network to localhost:8420
 dom.window.eval(js);
-await new Promise(r=>setTimeout(r,1200));
+await new Promise(r=>setTimeout(r,2500));
 const d = dom.window.document;
 const q = s => [...d.querySelectorAll(s)];
 console.log('title       :', d.title);
-console.log('h1          :', d.querySelector('h1')?.textContent);
 console.log('cards       :', q('.card').length);
-console.log('tiers       :', q('.tier').map(e=>e.textContent).join(' | '));
-console.log('FL tags     :', q('.tag').length);
-console.log('refusal     :', q('.refusal')[0]?.textContent.trim().slice(0,90) ?? 'NONE');
+console.log('tiers       :', q('.tier').length, '|', [...new Set(q('.tier').map(e=>e.textContent))].join(', '));
+console.log('refusal(s)  :', q('.refusal').length);
+q('.refusal').forEach(e=>console.log('   -', e.textContent.trim().slice(0,100)));
 console.log('legal paras :', q('.legal p').length);
-console.log('api error   :', q('.error')[0] ? 'shown (expected: API not deployed)' : 'none');
+console.log('sections    :', q('h2').map(e=>e.textContent).join(' | '));
+console.log('errors shown:', q('.error').length);

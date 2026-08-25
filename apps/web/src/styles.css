@@ -99,3 +99,10 @@ h2 { font-size: 1.4rem; margin: 2.5rem 0 0.25rem; }
 }
 .legal p { max-width: 70ch; }
 .ver { opacity: 0.6; font-size: 0.78rem; }
+
+.prov {
+  display: inline-block; margin-top: 0.35rem; font-size: 0.7rem;
+  padding: 0.18rem 0.45rem; border-radius: 999px; letter-spacing: 0.03em;
+}
+.prov-ok   { background: rgba(94, 224, 138, 0.12); color: var(--accent); }
+.prov-weak { background: rgba(255, 207, 107, 0.12); color: var(--warn); }

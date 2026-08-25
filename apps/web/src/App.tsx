@@ -6,6 +6,7 @@ import {
   type ConditionEvidence,
   type EvidenceTier,
 } from '@x420/core';
+import { Products } from './Products.js';
 
 const API_BASE = import.meta.env.VITE_X420_API ?? 'https://api.x420.org';
 
@@ -198,6 +199,8 @@ export function App() {
       </section>
 
       <Dispensaries />
+
+      <Products />
 
       <footer className="legal">
         <h2>Please read</h2>
