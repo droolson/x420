@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.turbo/
+.next/
+.expo/
+.wrangler/
+.vercel/
+coverage/
+*.tsbuildinfo
+
+# Secrets — NEVER commit. All credentials live in macOS Keychain via secretctl.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.keypair.json
+wrangler.toml.local
+dapp-store/publishing-keypair.json
+dapp-store/*.private.json
+
+.DS_Store

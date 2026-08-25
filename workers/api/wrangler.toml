@@ -1,0 +1,25 @@
+name = "x420-api"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Public, non-secret config. Secrets go via `wrangler secret put`, never here.
+[vars]
+FACILITATOR_URL = "https://api.cdp.coinbase.com/platform/v2/x402/verify"
+PUBLIC_BASE_URL = "https://api.x420.org"
+# SOLANA_PAY_TO is set per-environment; see docs/DEPLOY.md
+SOLANA_PAY_TO = "REPLACE_WITH_X420_TREASURY_ADDRESS"
+
+# Refresh the OMMU public-records snapshot daily at 09:00 UTC.
+[triggers]
+crons = ["0 9 * * *"]
+
+[[kv_namespaces]]
+binding = "X420_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[observability]
+enabled = true
+
+[env.production]
+route = { pattern = "api.x420.org/*", zone_name = "x420.org" }

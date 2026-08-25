@@ -1,0 +1,16 @@
+import { readFileSync } from 'node:fs';
+import { parseSnapshot, byCounty, searchByZip } from '../packages/ommu/src/index.js';
+const html = readFileSync(new URL('../packages/ommu/test/fixtures/mmtc.html', import.meta.url), 'utf8');
+const s = parseSnapshot(html);
+console.log('MMTC licensees :', s.mmtcs.length);
+console.log('Locations      :', s.locations.length);
+console.log('Counties       :', byCounty(s.locations).size);
+console.log('\n-- first 3 licensees --');
+for (const m of s.mmtcs.slice(0,3)) console.log(`  ${m.name} | lic ${m.licenseNumber ?? 'n/a'} | ${m.website ?? 'no site'}`);
+console.log('\n-- Orange County (Orlando) top 5 --');
+for (const l of (byCounty(s.locations).get('Orange') ?? []).slice(0,5)) console.log(`  ${l.company} — ${l.address}, ${l.city} ${l.zip}`);
+console.log('\n-- top 8 counties --');
+const counts=[...byCounty(s.locations)].map(([c,v])=>[c,v.length] as const).sort((a,b)=>b[1]-a[1]);
+for (const [c,n] of counts.slice(0,8)) console.log(`  ${String(c).padEnd(16)} ${n}`);
+console.log('\n-- zip 32801 area --');
+for (const l of searchByZip(s.locations,'32801').slice(0,4)) console.log(`  ${l.company} — ${l.address} ${l.zip}`);

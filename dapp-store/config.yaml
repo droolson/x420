@@ -1,0 +1,60 @@
+publisher:
+  name: Drooly AI, Inc.
+  address: Orlando, Florida, United States
+  website: https://x420.org
+  email: publisher@x420.org
+
+app:
+  name: X420
+  address: https://x420.org
+  android_package: org.x420.app
+  urls:
+    license_url: https://github.com/droolson/x420/blob/main/LICENSE
+    copyright_url: https://x420.org/legal
+    privacy_policy_url: https://x420.org/privacy
+    website: https://x420.org
+
+release:
+  media:
+    - purpose: icon
+      uri: assets/icon.png
+  catalog:
+    en-US:
+      name: X420
+      short_description: Evidence-linked medical cannabis companion for Florida patients.
+      long_description: >
+        X420 helps Florida medical cannabis patients make informed decisions using
+        published clinical evidence, not marketing copy.
+
+        Every therapeutic statement in X420 is bound to a citation from the National
+        Academies of Sciences 2017 consensus review or an FDA approval, and is
+        labelled with the strength of that evidence. When the evidence is weak, X420
+        says so. When there is not enough evidence to support a use, X420 refuses to
+        rank products for it at all — even for conditions that legally qualify in
+        Florida.
+
+        Find licensed dispensing locations from Florida Office of Medical Marijuana
+        Use public records, covering 777 locations across 47 counties, every record
+        timestamped and linked back to the source.
+
+        X420 was built by a founder with a spinal cord injury who uses medical
+        cannabis. That is also why X420 will not tell you cannabis restores motor
+        function: there is no good evidence for that claim, and you deserve the
+        truth more than you deserve a good story.
+
+        X420 does not sell cannabis, does not take orders, and is not a substitute
+        for your physician. Your condition selection stays on your device.
+
+        Wallet features use Mobile Wallet Adapter and Seed Vault for signing
+        API access payments over the open x402 protocol. X420 never takes
+        custody of your keys or funds.
+      new_in_version: Initial release.
+      saga_features: >
+        Uses Mobile Wallet Adapter for Seed Vault signing. Payments settle in USDC
+        on Solana via the x402 open payment protocol.
+    solana_mobile_dapp_publisher_portal:
+      google_store_package_name: org.x420.app
+      testing_instructions: >
+        No account required to browse conditions or dispensary locations.
+        Wallet connection is optional and only used for metered API access.
+        Reviewers can exercise the full free tier without a Seeker device.

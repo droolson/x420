@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["@cloudflare/workers-types"],
+    "lib": ["ES2023"],
+    "noEmit": true,
+    "paths": {
+      "@x420/core": ["../../packages/core/src/index.ts"],
+      "@x420/ommu": ["../../packages/ommu/src/index.ts"],
+      "@x420/x402-gateway": ["../../packages/x402-gateway/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*"]
+}
