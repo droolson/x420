@@ -16,9 +16,10 @@
     "clean": "rm -rf packages/*/dist node_modules/.cache"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "jsdom": "^30.0.1",
     "typescript": "^5.9.0",
-    "vitest": "^4.1.0",
-    "@types/node": "^22.0.0"
+    "vitest": "^4.1.0"
   },
   "packageManager": "pnpm@11.23.0"
 }
