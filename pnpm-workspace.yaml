@@ -2,3 +2,13 @@ packages:
   - "packages/*"
   - "workers/*"
   - "apps/*"
+
+# pnpm 11 requires an explicit trust decision for any dependency that runs a
+# lifecycle build script (strictDepBuilds defaults to true). These two need
+# their postinstall to fetch platform-native binaries:
+#   esbuild  — bundler binary, used transitively by vitest and wrangler
+#   workerd  — the Cloudflare Workers runtime, required by `wrangler dev`
+# Everything else stays denied by default.
+allowBuilds:
+  esbuild: true
+  workerd: true
