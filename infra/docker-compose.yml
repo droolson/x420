@@ -1,0 +1,41 @@
+# X420 local data plane.
+#
+# Postgres runs on 5433, NOT 5432 — 5432 is already taken by the Honcho stack
+# on this machine. Changing that would break an unrelated running service.
+#
+# Start:   docker compose -f infra/docker-compose.yml up -d
+# Status:  docker compose -f infra/docker-compose.yml ps
+# Logs:    docker compose -f infra/docker-compose.yml logs -f postgres
+# Stop:    docker compose -f infra/docker-compose.yml down
+#
+# The password here is for LOCAL DEVELOPMENT ONLY and is intentionally not a
+# secret. Production credentials live in the platform's secret store, never in
+# this file and never in git.
+
+name: x420
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: x420-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: x420
+      POSTGRES_PASSWORD: x420_local_dev_only
+      POSTGRES_DB: x420
+      # Deterministic collation so ORDER BY is stable across machines.
+      POSTGRES_INITDB_ARGS: "--locale=C --encoding=UTF8"
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - x420_pgdata:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U x420 -d x420"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  x420_pgdata:
