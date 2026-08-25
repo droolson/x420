@@ -69,6 +69,22 @@ export interface ConditionEvidence {
   readonly label: string;
   /** Florida-qualifying condition under s.381.986(2), F.S. */
   readonly floridaQualifying: boolean;
+  /**
+   * Which statutory paragraph of s.381.986(2), F.S. qualifies this condition,
+   * e.g. '(m)'. Null when the condition is not named in the statute and would
+   * only qualify, if at all, via the (2)(k) "same kind or class" catch-all.
+   *
+   * This exists because "qualifies in Florida" is not one thing. A condition
+   * named in the statute is settled; a condition reachable only through (2)(k)
+   * requires the physician to file efficacy documentation with their board
+   * within 14 days. Patients deserve to know which situation they are in.
+   */
+  readonly statutoryParagraph?: string | null;
+  /**
+   * Extra statutory conditions a patient must satisfy beyond simply having the
+   * diagnosis. Rendered verbatim in the UI; never summarised away.
+   */
+  readonly statutoryNote?: string;
   readonly tier: EvidenceTier;
   /** What the evidence actually supports — phrased as an outcome, not a promise. */
   readonly supportedOutcome: string;
@@ -116,7 +132,20 @@ export const FDA_NABILONE: Citation = {
 
 export const FL_STATUTE_381_986: Citation = {
   source: 'Florida Statutes s.381.986 — Medical use of marijuana',
-  url: 'https://www.flsenate.gov/Laws/Statutes/2023/381.986',
-  year: 2023,
+  url: 'https://www.flsenate.gov/Laws/Statutes/2025/381.986',
+  year: 2025,
+  kind: 'regulatory-approval',
+};
+
+/**
+ * Florida Administrative Code 64-4.224 — Dosing and Supply Limits.
+ *
+ * Permanent rule effective 2026-08-24, replacing emergency rule 64ER22-8.
+ * Any cached citation to the emergency rule is stale.
+ */
+export const FL_RULE_64_4_224: Citation = {
+  source: 'Florida Administrative Code 64-4.224 — Dosing and supply limits',
+  url: 'https://flrules.org/gateway/ruleNo.asp?id=64-4.224',
+  year: 2026,
   kind: 'regulatory-approval',
 };

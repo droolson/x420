@@ -106,3 +106,9 @@ h2 { font-size: 1.4rem; margin: 2.5rem 0 0.25rem; }
 }
 .prov-ok   { background: rgba(94, 224, 138, 0.12); color: var(--accent); }
 .prov-weak { background: rgba(255, 207, 107, 0.12); color: var(--warn); }
+
+.statute {
+  font-size: 0.87rem; margin: 0 0 1.1rem;
+  padding: 0.65rem 0.8rem; border-left: 3px solid var(--warn);
+  background: rgba(255, 207, 107, 0.07); border-radius: 0 8px 8px 0;
+}

@@ -22,8 +22,11 @@ import {
 export const CONDITIONS: readonly ConditionEvidence[] = [
   {
     id: 'chronic-pain',
-    label: 'Chronic pain',
+    label: 'Chronic nonmalignant pain',
     floridaQualifying: true,
+    statutoryParagraph: '(m)',
+    statutoryNote:
+      'Florida defines this NARROWLY. s.381.986(1)(c), F.S.: "pain that is caused by a qualifying medical condition or that originates from a qualifying medical condition and persists beyond the usual course of that qualifying medical condition." Freestanding chronic pain with no qualifying underlying condition does not meet the statutory definition, regardless of how certification clinics advertise it.',
     tier: 'substantial',
     supportedOutcome:
       'In adults with chronic pain, patients treated with cannabis or cannabinoids are more likely to experience a clinically significant reduction in pain symptoms.',
@@ -40,6 +43,7 @@ export const CONDITIONS: readonly ConditionEvidence[] = [
     id: 'spasticity-ms',
     label: 'Multiple sclerosis spasticity',
     floridaQualifying: true,
+    statutoryParagraph: '(j)',
     tier: 'substantial',
     supportedOutcome:
       'In adults with multiple sclerosis, short-term use of oral cannabinoids improves patient-reported spasticity symptoms.',
@@ -56,6 +60,9 @@ export const CONDITIONS: readonly ConditionEvidence[] = [
     id: 'spasticity-sci',
     label: 'Spinal cord injury — spasticity and neuropathic pain',
     floridaQualifying: true,
+    statutoryParagraph: null,
+    statutoryNote:
+      "Spinal cord injury is NOT named in s.381.986(2), F.S. It can qualify only through the (2)(k) \"same kind or class\" catch-all, or as chronic nonmalignant pain under (m) where the pain originates from a qualifying condition. Under s.381.986(4)(b), a physician certifying under (2)(k) must file documentation with their board within 14 days establishing the efficacy of marijuana for that condition. Qualification is the physician's determination and is not guaranteed.",
     tier: 'limited',
     supportedOutcome:
       'Evidence in spinal cord injury specifically is limited. The strongest adjacent evidence is for chronic and neuropathic pain broadly (substantial) and for MS spasticity (substantial); SCI-specific trials are small and fewer.',
@@ -73,6 +80,9 @@ export const CONDITIONS: readonly ConditionEvidence[] = [
     id: 'chemo-nausea',
     label: 'Chemotherapy-induced nausea and vomiting',
     floridaQualifying: true,
+    statutoryParagraph: '(a)',
+    statutoryNote:
+      'Qualifies via cancer, s.381.986(2)(a), F.S. Chemotherapy side effects are not themselves a separately named qualifying condition.',
     tier: 'conclusive',
     supportedOutcome:
       'Oral cannabinoids are effective antiemetics in the treatment of chemotherapy-induced nausea and vomiting.',
@@ -88,6 +98,7 @@ export const CONDITIONS: readonly ConditionEvidence[] = [
     id: 'epilepsy-refractory',
     label: 'Treatment-resistant epilepsy (Dravet, Lennox-Gastaut, TSC)',
     floridaQualifying: true,
+    statutoryParagraph: '(b)',
     tier: 'conclusive',
     supportedOutcome:
       'Purified cannabidiol (Epidiolex) is FDA-approved to reduce seizure frequency in Dravet syndrome, Lennox-Gastaut syndrome, and tuberous sclerosis complex.',
@@ -104,6 +115,7 @@ export const CONDITIONS: readonly ConditionEvidence[] = [
     id: 'ptsd',
     label: 'Post-traumatic stress disorder',
     floridaQualifying: true,
+    statutoryParagraph: '(f)',
     tier: 'limited',
     supportedOutcome:
       'Evidence for cannabis in PTSD is limited, and study quality is low. Some patients report symptom relief; controlled evidence has not established efficacy.',
@@ -120,6 +132,7 @@ export const CONDITIONS: readonly ConditionEvidence[] = [
     id: 'appetite-wasting',
     label: 'Appetite loss and wasting (HIV/AIDS)',
     floridaQualifying: true,
+    statutoryParagraph: '(d),(e)',
     tier: 'limited',
     supportedOutcome:
       'Limited evidence that cannabis and oral cannabinoids increase appetite and reduce weight loss associated with HIV/AIDS.',
@@ -135,6 +148,7 @@ export const CONDITIONS: readonly ConditionEvidence[] = [
     id: 'glaucoma',
     label: 'Glaucoma',
     floridaQualifying: true,
+    statutoryParagraph: '(c)',
     tier: 'insufficient',
     supportedOutcome:
       'There is insufficient evidence that cannabinoids are an effective treatment for glaucoma. Any reduction in intraocular pressure is short-lived, requiring impractical dosing frequency.',
@@ -151,6 +165,9 @@ export const CONDITIONS: readonly ConditionEvidence[] = [
     id: 'sleep-disturbance',
     label: 'Sleep disturbance (secondary to chronic conditions)',
     floridaQualifying: false,
+    statutoryParagraph: null,
+    statutoryNote:
+      'Insomnia and sleep disturbance are NOT named in s.381.986(2), F.S. Certification-clinic lists advertising "insomnia" as a Florida qualifying condition are describing a physician prediction under the (2)(k) catch-all, not the text of the statute.',
     tier: 'moderate',
     supportedOutcome:
       'Moderate evidence that cannabinoids improve short-term sleep outcomes in individuals with sleep disturbance associated with OSA, fibromyalgia, chronic pain, and MS.',

@@ -39,7 +39,13 @@ function ConditionCard({ c }: { c: ConditionEvidence }) {
         <div>
           <h3>{c.label}</h3>
           <EvidenceBadge tier={c.tier} />
-          {c.floridaQualifying && <span className="tag">FL qualifying</span>}
+          {c.floridaQualifying && (
+            <span className="tag">
+              {c.statutoryParagraph
+                ? `FL s.381.986(2)${c.statutoryParagraph}`
+                : 'FL — catch-all only'}
+            </span>
+          )}
         </div>
         <button aria-expanded={open} className="chev">{open ? '−' : '+'}</button>
       </header>
@@ -56,6 +62,12 @@ function ConditionCard({ c }: { c: ConditionEvidence }) {
 
       {open && (
         <div className="detail">
+          {c.statutoryNote && (
+            <>
+              <h4>Florida legal status</h4>
+              <p className="statute">{c.statutoryNote}</p>
+            </>
+          )}
           {c.cautions.length > 0 && (
             <>
               <h4>Before you use this</h4>
