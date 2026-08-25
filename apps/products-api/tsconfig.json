@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "paths": {
+      "@x420/core": ["../../packages/core/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*"]
+}
